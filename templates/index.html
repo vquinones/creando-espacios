@@ -1,0 +1,219 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>UEGP #191 - Creando Espacios</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!--[if lte IE 8]>
+    <script src="{% static 'assets/js/ie/html5shiv.js' %}"></script><![endif]-->
+    <link rel="stylesheet" href="{% static 'assets/css/main.css' %}"/>
+    <link rel="stylesheet" href="{% static 'assets/css/jquery.bxslider.min.css' %}"/>
+    <!--[if lte IE 8]>
+    <link rel="stylesheet" href="{% static 'assets/css/ie8.css' %}"/><![endif]-->
+    <style>
+    </style>
+</head>
+<style>
+    a {
+        text-decoration: none !important;
+    }
+    .carousel-inner > .item > img {
+        width:100%;
+        height:auto;
+    }
+
+    /* laptops */
+    @media (max-width: 1023px) and (min-width: 992px) {
+        .slider-size {
+             height: 200px;
+        }
+        .slider-size > img {
+            width: 80%;
+        }
+    }
+
+    /* desktops */
+    @media (min-width: 1024px) {
+        .slider-size {
+            height: 400px;
+        }
+        .slider-size > img {
+            width: 60%;
+        }
+    }
+    .carousel-indicators {
+       bottom: 7px;
+    }
+    .h1_title {
+        color:#fff;
+        font-weight: bolder;
+        font-size:24pt;
+        width:100%;
+    }
+    .carousel-caption {
+        width:800px;
+        left:10%;
+    }
+</style>
+<body>
+{% block content %}
+{% block menu %}
+<section id="header">
+    <header>
+        <span class="image avatar"><img src="{% static 'images/logo.jpg' %}" alt=""/></span>
+        <h1 id="logo"><a href="#">Creando Espacios</a></h1>
+        <p>Un entorno claro hace que el significado sea más fácilmente accesible
+            <br/><i> J. G. T. Van Dalen</i></p>
+    </header>
+    <nav id="nav">
+        <ul>
+            <li><a href="/" class="active">UEP Nº 191</a></li>
+            <li><a id="us" href="/us">Nosotros</a></li>
+            <li><a id="gallery" href="/gallery">Galeria</a></li>
+            <li><a id="event" href="/event">Eventos</a></li>
+            <li><a id="article" href="/article">Artículos</a></li>
+        </ul>
+    </nav>
+    <footer>
+        <ul class="icons">
+            <li><a href="https://twitter.com/"  target="_blank" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+            <li><a href="https://www.facebook.com/uegp.creandoespacios" target="_blank" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+            <li><a href="mailto://creandoespaciosuegp191primaria@gmail.com" target="_blank" class="icon fa-envelope"><span class="label">Email</span></a></li>
+        </ul>
+    </footer>
+</section>
+{% endblock %}
+
+{% block wrapper %}
+<div id="wrapper">
+
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+      </ol>
+
+      <!-- Wrapper for slides -->
+      <div class="carousel-inner">
+        <div class="item active">
+          <img src="{{uep.photo_1.url}}" alt="Los Angeles" class="fixed-class">
+          <div class="carousel-caption d-none d-md-block">
+              <h3 class="h1_title">{{uep.title_photo_1.url}}</h3>
+              <p>{{uep.detail_photo_1}}</p>
+          </div>
+        </div>
+
+        <div class="item">
+          <img src="{{uep.photo_2.url}}" alt="Chicago" class="fixed-class">
+          <div class="carousel-caption d-none d-md-block">
+              <h3>{{uep.title_photo_2}}</h3>
+              <p>{{uep.detail_photo_2}}</p>
+          </div>
+        </div>
+
+        <div class="item">
+          <img src="{{uep.photo_3.url}}" alt="New York" class="fixed-class">
+          <div class="carousel-caption d-none d-md-block">
+              <h3>{{uep.title_photo_3}}</h3>
+              <p>{{uep.detail_photo_3}}</p>
+          </div>
+        </div>
+
+        <div class="item">
+          <img src="{{uep.photo_4.url}}" alt="Chicago" class="fixed-class">
+          <div class="carousel-caption d-none d-md-block">
+              <h3>{{uep.title_photo_4}}</h3>
+              <p>{{uep.detail_photo_4}}</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Left and right controls -->
+      <a class="left carousel-control" data-target="#carouselExampleIndicators" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" data-target="#carouselExampleIndicators" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+
+
+    <div id="main">
+        {% block main %}
+        <section id="uep">
+            <div class="container">
+                <header class="major">
+                    <h2>{{ title }}</h2>
+                    <h4>{{ detail }}</h4>
+                </header>
+                <p>{{ body|safe|escape }}</p>
+            </div>
+        </section>
+        {% endblock %}
+
+        {% block contact %}
+        <section id="contacto">
+            <div class="container">
+                <h3>Contacto</h3>
+                <p>Integer eu ante ornare amet commetus vestibulum blandit integer in curae ac faucibus integer non.
+                    Adipiscing cubilia elementum integer. Integer eu ante ornare amet commetus.</p>
+                <form method="post" action="/">
+                    {% csrf_token %}
+                    <div class="row uniform">
+                        <div class="6u 12u(xsmall)"><input type="text" name="name" required="required" id="name" placeholder="Apellido y Nombre"/></div>
+                        <div class="6u 12u(xsmall)"><input type="email" name="email" required="required" id="email" placeholder="Email"/>
+                        </div>
+                    </div>
+                    <div class="row uniform">
+                        <div class="12u"><input type="text" name="subject" required="required" id="subject" placeholder="Titulo"/></div>
+                    </div>
+                    <div class="row uniform">
+                        <div class="12u"><textarea name="message" required="required" id="message" placeholder="Mensage"
+                                                   rows="6"></textarea></div>
+                    </div>
+                    <div class="row uniform">
+                        <div class="12u">
+                            <ul class="actions">
+                                <li><input type="submit" class="special" value="Enviar"/></li>
+                                <li><input type="reset" value="Borrar"/></li>
+                            </ul>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+        {% endblock %}
+    </div>
+
+</div>
+{% endblock %}
+{% endblock %}
+
+<script src="{% static 'assets/js/jquery.min.js' %}"></script>
+<script src="{% static 'assets/js/jquery.bxslider.min.js' %}"></script>
+<script src="{% static 'assets/js/jquery.scrollzer.min.js' %}"></script>
+<script src="{% static 'assets/js/jquery.scrolly.min.js' %}"></script>
+<script src="{% static 'assets/js/skel.min.js' %}"></script>
+<script src="{% static 'assets/js/util.js' %}"></script>
+<!--[if lte IE 8]>
+<script src="{% static 'assets/js/ie/respond.min.js' %}"></script><![endif]-->
+<script src="{% static 'assets/js/main.js' %}"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+{% block scripts %}
+<script>
+$('.carousel').carousel();
+</script>
+{% endblock %}
+</body>
+
+</html>

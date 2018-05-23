@@ -1,0 +1,116 @@
+{% extends "index.html" %}
+
+{% load static %}
+
+{% block content %}
+    {% block menu %}
+    {{block.super}}
+    {% endblock %}
+
+    {% block wrapper %}
+
+    {% block gallery %}
+    <div id="wrapper">
+
+    <div id="main">
+    <section id="uep">
+        <div class="container">
+            <header class="major">
+                <h2>Creando Espacios - Galería</h2>
+            </header>
+        </div>
+    </section>
+    <section id="galeria">
+        <div class="container">
+            {% if gallery %}
+            <h4>{{gallery.detail|safe|escape}}</h4>
+            {% else %}
+            <p>{{gallery_title}}</p>
+            {% endif %}
+            <div class="features">
+                {% if photos %}
+                    <ul class="bxslider">
+                        {% for photo in photos %}
+                        <li><img src="{{MEDIA_URL}}{{photo}}" />
+                        <span><b>{{photo.detail|escape|safe}}</b></span></li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+
+                {% for gallery in galleries %}
+                <article>
+                    {% if gallery.photo %}
+                        <a href="#" class="image"><img src="{{gallery.photo.url}}" /></a>
+                    {% else %}
+                        <a href="#" class="image"><img src="{% static 'images/pic03.jpg' %}" /></a>
+                    {% endif %}
+                    <div class="inner">
+                        <h4><a href="/gallery/{{gallery.id}}">{{gallery.title}}</a></h4>
+                        <p>{{gallery.detail|safe|escape}}</p>
+                    </div>
+                </article>
+                {% endfor %}
+                {% if paginator %}
+
+                <nav aria-label="Page navigation example">
+                  <ul class="pagination">
+                    {% if galleries.has_previous %}
+                    <li class="page-item"><a class="page-link" href="?page={{ galleries.previous_page_number }}">Anterior</a></li>
+                    {% endif %}
+                    <!--<li class="page-item"><a class="page-link" href="#">1</a></li>-->
+                    <!--<li class="page-item"><a class="page-link" href="#">2</a></li>-->
+                    <!--<li class="page-item"><a class="page-link" href="#">3</a></li>-->
+                    {% if galleries.has_next %}
+                    <li class="page-item"><a class="page-link" href="?page={{ galleries.previous_page_number }}">Siguiente</a></li>
+                    {% endif %}
+                  </ul>
+                </nav>
+
+                <!--<div class="pagination">-->
+                    <!--<span class="step-links">-->
+                        <!--{% if galleries.has_previous %}-->
+                            <!--<a href="?page={{ galleries.previous_page_number }}">Anterior</a>-->
+                        <!--{% endif %}-->
+
+                        <!--<span class="current">-->
+                            <!--Página {{ galleries.number }} de {{ galleries.paginator.num_pages }}.-->
+                        <!--</span>-->
+
+                        <!--{% if galleries.has_next %}-->
+                            <!--<a href="?page={{ galleries.next_page_number }}">Siguiente</a>-->
+                        <!--{% endif %}-->
+                    <!--</span>-->
+                <!--</div>-->
+                {% endif %}
+            </div>
+        </div>
+    </section>
+    </div>
+    </div>
+
+    {% endblock %}
+    {% endblock %}
+{% endblock %}
+
+			<script src="{% static 'assets/js/jquery.min.js' %}"></script>
+			<script src="{% static 'assets/js/jquery.bxslider.min.js' %}"></script>
+			<script src="{% static 'assets/js/jquery.scrollzer.min.js' %}"></script>
+			<script src="{% static 'assets/js/jquery.scrolly.min.js' %}"></script>
+			<script src="{% static 'assets/js/skel.min.js' %}"></script>
+			<script src="{% static 'assets/js/util.js' %}"></script>
+			<!--[if lte IE 8]><script src="{% static 'assets/js/ie/respond.min.js' %}"></script><![endif]-->
+			<script src="{% static 'assets/js/main.js' %}"></script>
+
+    {% block scripts %}
+    <script>
+        $('.bxslider').bxSlider({
+            adaptiveHeight: true,
+            mode: 'fade',
+            slideWidth: 1000
+        });
+        $('#nav ul li a').each(function(i){
+            $(this).removeClass('active');
+        });
+        $('#gallery').addClass('active');
+    </script>
+    {% endblock %}

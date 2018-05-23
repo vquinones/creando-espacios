@@ -1,0 +1,66 @@
+{% extends "index.html" %}
+
+{% load static %}
+
+{% block content %}
+    {% block menu %}
+    {{block.super}}
+    {% endblock %}
+
+    {% block wrapper %}
+
+    {% block gallery %}
+    <div id="wrapper">
+    <div id="main">
+    <section id="uep">
+        <div class="container">
+            <header class="major">
+                <h2>Creando Espacios - Eventos</h2>
+            </header>
+        </div>
+    </section>
+    <section id="uep">
+        <div class="container">
+            <p>{{event_title}}</p>
+
+            <div class="container">
+                {% for event in events %}
+                <article>
+                    <div class="inner">
+                        <h4>{{event.title}}</h4>
+                        <img style="vertical-align:middle;" src="{% static 'images/calendar.png' %}" />
+                        <b style="font-size:10pt;">{{event.start_date|date:"M d, Y h:i"}}
+                        Lugar ... {{event.lugar}}</b>
+                        <p style="font-size:10pt;"><i>{{event.detail|safe|escape}}</i></p>
+                    </div>
+                    <p style="font-size:11pt;">
+
+
+                    </p>
+                </article>
+                <hr />
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    </div>
+    </div>
+    {% endblock %}
+    {% endblock %}
+{% endblock %}
+
+			<script src="{% static 'assets/js/jquery.min.js' %}"></script>
+			<script src="{% static 'assets/js/jquery.scrollzer.min.js' %}"></script>
+			<script src="{% static 'assets/js/jquery.scrolly.min.js' %}"></script>
+			<script src="{% static 'assets/js/skel.min.js' %}"></script>
+			<script src="{% static 'assets/js/util.js' %}"></script>
+			<!--[if lte IE 8]><script src="{% static 'assets/js/ie/respond.min.js' %}"></script><![endif]-->
+			<script src="{% static 'assets/js/main.js' %}"></script>
+    {% block scripts %}
+    <script>
+        $('#nav ul li a').each(function(i){
+            $(this).removeClass('active');
+        });
+        $('#event').addClass('active');
+    </script>
+    {% endblock %}

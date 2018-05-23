@@ -1,0 +1,174 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Read Only by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="{% static 'assets/js/ie/html5shiv.js' %}"></script><![endif]-->
+		<link rel="stylesheet" href="{% static 'assets/css/main.css' %}" />
+		<!--[if lte IE 8]><link rel="stylesheet" href="{% static 'assets/css/ie8.css' %}" /><![endif]-->
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		<style>
+		</style>
+	</head>
+	<body>
+            {% block content %}
+            {% block menu %}
+			<section id="header">
+				<header>
+					<span class="image avatar"><img src="{% static 'images/logo.jpg' %}" alt="" /></span>
+					<h1 id="logo"><a href="#">Creando Espacios</a></h1>
+					<p>Un entorno claro hace que el significado sea más fácilmente accesible
+					<br /><i> J. G. T. Van Dalen</i></p>
+				</header>
+				<nav id="nav">
+					<ul>
+						<li><a href="#uep" class="active">UEP #191</a></li>
+						<li><a href="#nosotros">Nosotros</a></li>
+						<li><a href="#galeria">Galeria</a></li>
+						<li><a href="#eventos">Eventos</a></li>
+						<li><a href="#contacto">Contacto</a></li>
+					</ul>
+				</nav>
+				<footer>
+					<ul class="icons">
+						<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+						<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+						<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+						<li><a href="#" class="icon fa-github"><span class="label">Github</span></a></li>
+						<li><a href="#" class="icon fa-envelope"><span class="label">Email</span></a></li>
+					</ul>
+				</footer>
+			</section>
+            {% endblock %}
+
+			<div id="wrapper">
+                <div id="main">
+                        {% block main %}
+                        <section id="uep">
+                            <div class="container">
+                                <header class="major">
+                                    <h2>{{ title }}</h2>
+                                    <p>{{ detail }}</p>
+                                </header>
+                                <p>{{ body }}</p>
+                            </div>
+                        </section>
+                        {% endblock %}
+                        {% block teachers %}
+                        <section id="nosotros">
+                            <div class="container">
+                                <h3>Nosotros</h3>
+                                <p>Nuestro cuerpo docente....</p>
+                                <div class="features">
+                                    {% for item in teachers %}
+                                    <article>
+                                        <a href="#" class="image"><img src="{{MEDIA_URL}}{{item.photo.url}}" alt="" /></a>
+                                        <div class="inner">
+                                            <h4>{{item.name}}</h4>
+                                            <p>{{item.detail}}</p>
+                                        </div>
+                                    </article>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </section>
+                        {% endblock %}
+
+                        {% block gallery %}
+                        <section id="galeria">
+                            <div class="container">
+                                <h3>Galeria</h3>
+                                <p>Integer eu ante ornare amet commetus vestibulum blandit integer in curae ac faucibus integer non. Adipiscing cubilia elementum integer. Integer eu ante ornare amet commetus.</p>
+                                <div class="features">
+                                    {% for item in gallery %}
+                                    <article>
+                                        <a href="#" class="image"><img src="{{MEDIA_URL}}{{gallery_image}}" alt="" /></a>
+                                        <div class="inner">
+                                            <h4>{{item.title}}</h4>
+                                            <p>{{item.detail}}</p>
+                                        </div>
+                                    </article>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </section>
+                        {% endblock %}
+
+                        {% block events %}
+                        <section id="eventos">
+                            <div class="container">
+                                <h3>Eventos</h3>
+                                <p>Integer eu ante ornare amet commetus vestibulum blandit integer in curae ac faucibus integer non. Adipiscing cubilia elementum integer. Integer eu ante ornare amet commetus.</p>
+                                <div class="features">
+                                    {% for item in events %}
+                                    <article>
+                                        <div class="inner">
+                                            <h4>{{item.title}}</h4>
+                                            <h6>{{item.start_date}}</h6>
+                                            <p>{{item.detail}}</p>
+                                        </div>
+                                    </article>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </section>
+                        {% endblock %}
+
+                        {% block contact %}
+                        <section id="contacto">
+                            <div class="container">
+                                <h3>Contacto</h3>
+                                <p>Integer eu ante ornare amet commetus vestibulum blandit integer in curae ac faucibus integer non. Adipiscing cubilia elementum integer. Integer eu ante ornare amet commetus.</p>
+                                <form method="post" action="#">
+                                    <div class="row uniform">
+                                        <div class="6u 12u(xsmall)"><input type="text" name="name" id="name" placeholder="Name" /></div>
+                                        <div class="6u 12u(xsmall)"><input type="email" name="email" id="email" placeholder="Email" /></div>
+                                    </div>
+                                    <div class="row uniform">
+                                        <div class="12u"><input type="text" name="subject" id="subject" placeholder="Subject" /></div>
+                                    </div>
+                                    <div class="row uniform">
+                                        <div class="12u"><textarea name="message" id="message" placeholder="Message" rows="6"></textarea></div>
+                                    </div>
+                                    <div class="row uniform">
+                                        <div class="12u">
+                                            <ul class="actions">
+                                                <li><input type="submit" class="special" value="Send Message" /></li>
+                                                <li><input type="reset" value="Reset Form" /></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </section>
+                        {% endblock %}
+                </div>
+
+				<!-- Footer -->
+					<section id="footer">
+						<div class="container">
+							<ul class="copyright">
+								<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+							</ul>
+						</div>
+					</section>
+
+			</div>
+            {% endblock %}
+
+			<script src="{% static 'assets/js/jquery.min.js' %}"></script>
+			<script src="{% static 'assets/js/jquery.scrollzer.min.js' %}"></script>
+			<script src="{% static 'assets/js/jquery.scrolly.min.js' %}"></script>
+			<script src="{% static 'assets/js/skel.min.js' %}"></script>
+			<script src="{% static 'assets/js/util.js' %}"></script>
+			<!--[if lte IE 8]><script src="{% static 'assets/js/ie/respond.min.js' %}"></script><![endif]-->
+			<script src="{% static 'assets/js/main.js' %}"></script>
+	</body>
+
+</html>

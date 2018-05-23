@@ -1,0 +1,61 @@
+{% extends "index.html" %}
+
+{% load static %}
+
+{% block content %}
+    {% block menu %}
+    {{block.super}}
+    {% endblock %}
+
+    {% block wrapper %}
+
+    {% block gallery %}
+    <div id="wrapper">
+    <div id="main">
+    <section id="uep">
+        <div class="container">
+            <header class="major">
+                <h2>Creando Espacios - Docentes</h2>
+            </header>
+        </div>
+    </section>
+    <section id="galeria">
+        <div class="container">
+            <p>{{teacher_title}}</p>
+
+            <div class="features">
+                {% for teacher in teachers %}
+                <article>
+                    <a href="#" class="image"><img src="{{teacher.photo.url}}" alt="" /></a>
+                    <div class="inner">
+                        <h4>{{teacher.name}}</h4>
+                        <div>{{teacher.detail|safe|escape}}</div>
+                    </div>
+                </article>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    </div>
+    </div>
+
+    {% endblock %}
+    {% endblock %}
+{% endblock %}
+
+
+			<script src="{% static 'assets/js/jquery.min.js' %}"></script>
+			<script src="{% static 'assets/js/jquery.scrollzer.min.js' %}"></script>
+			<script src="{% static 'assets/js/jquery.scrolly.min.js' %}"></script>
+			<script src="{% static 'assets/js/skel.min.js' %}"></script>
+			<script src="{% static 'assets/js/util.js' %}"></script>
+			<!--[if lte IE 8]><script src="{% static 'assets/js/ie/respond.min.js' %}"></script><![endif]-->
+			<script src="{% static 'assets/js/main.js' %}"></script>
+    {% block scripts %}
+    <script>
+        $('#nav ul li a').each(function(i){
+            $(this).removeClass('active');
+        });
+        $('#us').addClass('active');
+    </script>
+    {% endblock %}
